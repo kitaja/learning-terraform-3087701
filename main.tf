@@ -68,13 +68,12 @@ module "blog_alb" {
 
   security_groups = module.blog_sg.security_group_id
 
-  http_tcp_listeners = [
-    {
-      port = 80
-      protocol = http
+  listeners = {
+    ex-http = {
+      port     = 80
+      protocol = "HTTP"
       target_group_index = 0
     }
-  ]
  
   target_groups = {
     ex-instance = {
