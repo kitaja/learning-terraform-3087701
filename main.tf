@@ -76,11 +76,11 @@ module "blog_alb" {
     }
   }
  
-  target_groups = {
-    ex-instance = {
+  target_groups = [
+    {
       name_prefix      = "blog"
-      protocol         = "HTTP"
-      port             = 80
+      backrend_protocol         = "HTTP"
+      backend_port             = 80
       target_type      = "instance"
       targets = {
         my_target = {
@@ -89,7 +89,7 @@ module "blog_alb" {
         }
       }
     }
-  }
+  ]
 
   tags = {
     Environment = "dev"
